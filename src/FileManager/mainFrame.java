@@ -1,4 +1,5 @@
 package FileManager;
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -108,13 +109,8 @@ public class mainFrame extends javax.swing.JFrame {
         int seleccion = fileChooser.showOpenDialog(null);
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             File archivo = fileChooser.getSelectedFile();
-            try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-                StringBuilder contenido = new StringBuilder();
-                String linea;
-                while ((linea = br.readLine()) != null) {
-                    contenido.append(linea).append("\n");
-                }
-                JOptionPane.showMessageDialog(null, "Contenido del archivo:\n" + contenido.toString());
+            try {
+                Desktop.getDesktop().open(archivo);
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Error al abrir el archivo: " + e.getMessage());
             }
