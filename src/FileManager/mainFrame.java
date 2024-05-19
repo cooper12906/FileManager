@@ -1,4 +1,5 @@
 package FileManager;
+import java.awt.Component;
 import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,6 +11,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComponent;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -37,9 +40,15 @@ public class mainFrame extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         BtnNewArchivo = new javax.swing.JButton();
         BtnOpenArchive = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BotonCerrarPrograma = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        CrearCampos = new javax.swing.JPanel();
+        tituloLabel = new javax.swing.JLabel();
+        fieldTitulo = new javax.swing.JTextField();
+        labelSize = new javax.swing.JLabel();
+        spinnerSize = new javax.swing.JSpinner();
+        botonCrearCampo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,9 +73,19 @@ public class mainFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Salir");
+        BotonCerrarPrograma.setText("Salir");
+        BotonCerrarPrograma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonCerrarProgramaMouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Cerrar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Salvar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +110,7 @@ public class mainFrame extends javax.swing.JFrame {
                 .addContainerGap(372, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BotonCerrarPrograma)
                 .addGap(135, 135, 135))
         );
         mainPanelLayout.setVerticalGroup(
@@ -104,8 +123,50 @@ public class mainFrame extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 403, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BotonCerrarPrograma)
                 .addGap(79, 79, 79))
+        );
+
+        CrearCampos.setPreferredSize(new java.awt.Dimension(563, 318));
+
+        tituloLabel.setText("Titulo Campo");
+
+        labelSize.setText("Size (Bytes)(ASCII)");
+
+        botonCrearCampo.setText("jButton1");
+
+        javax.swing.GroupLayout CrearCamposLayout = new javax.swing.GroupLayout(CrearCampos);
+        CrearCampos.setLayout(CrearCamposLayout);
+        CrearCamposLayout.setHorizontalGroup(
+            CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearCamposLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonCrearCampo)
+                    .addGroup(CrearCamposLayout.createSequentialGroup()
+                        .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloLabel)
+                            .addComponent(labelSize))
+                        .addGap(31, 31, 31)
+                        .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spinnerSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+        CrearCamposLayout.setVerticalGroup(
+            CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearCamposLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloLabel)
+                    .addComponent(fieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelSize)
+                    .addComponent(spinnerSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(botonCrearCampo)
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,10 +174,20 @@ public class mainFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(CrearCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(CrearCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -142,11 +213,17 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void BtnOpenArchiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnOpenArchiveMouseClicked
         JFileChooser fileChooser = new JFileChooser();
-        int seleccion = fileChooser.showOpenDialog(null);
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Text Files (.txt)","txt");
+        fileChooser.setFileFilter(filtro);
+        int seleccion = fileChooser.showOpenDialog(this);
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             File archivo = fileChooser.getSelectedFile();
             try {
                 Desktop.getDesktop().open(archivo);
+                int crearCampo = JOptionPane.showConfirmDialog(this, "¿Desea manipular campos en el archivo?");
+                if(crearCampo == 0){
+                    manipularCampoArchivo(archivo,this);
+                }
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Error al abrir el archivo: " + e.getMessage());
             }
@@ -161,12 +238,22 @@ public class mainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Nombre = JOptionPane.showInputDialog("Ingrese el nombre del archivo");
         try {
-            crearArchivo(Nombre, "lmao");
+            crearArchivo(Nombre);
         } catch (IOException ex) {
             Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BtnNewArchivoActionPerformed
+    //Boton para crear Archivos
+    
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton2MouseClicked
 
+    private void BotonCerrarProgramaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonCerrarProgramaMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_BotonCerrarProgramaMouseClicked
+    //Boton para Cerrar Archivo
     /**
      * @param args the command line arguments
      */
@@ -203,19 +290,45 @@ public class mainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCerrarPrograma;
     private javax.swing.JButton BtnNewArchivo;
     private javax.swing.JButton BtnOpenArchive;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel CrearCampos;
+    private javax.swing.JButton botonCrearCampo;
+    private javax.swing.JTextField fieldTitulo;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel labelSize;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JSpinner spinnerSize;
+    private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
-    public void crearArchivo(String Nombre, String contenido) throws IOException{
+    public void crearArchivo(String Nombre) throws IOException{
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter(Nombre+".txt"));
-            writer.write(contenido);
             JOptionPane.showMessageDialog(null, "Se ha creado exitosamente!");
             writer.flush();
+            writer.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    public void crearCampo(){
+        
+    }
+    public void manipularCampoArchivo(File archivo,Component parent) {
+        boolean metaExist = true;
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(archivo));
+            BufferedReader reader = new BufferedReader(new FileReader(archivo));
+            if(reader.readLine()== null){
+                int crearMeta = JOptionPane.showConfirmDialog(parent, "El archivo no contiene campos, desea agregarle?");
+                if(crearMeta == 0){
+                    
+                }
+                
+            }
+            
         }catch (IOException e){
             e.printStackTrace();
         }
