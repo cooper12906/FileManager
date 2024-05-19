@@ -6,6 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author PC
@@ -30,17 +35,25 @@ public class mainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        BtnNewArchive = new javax.swing.JButton();
+        BtnNewArchivo = new javax.swing.JButton();
         BtnOpenArchive = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mainPanel.setBackground(new java.awt.Color(51, 51, 51));
 
-        BtnNewArchive.setText("Nuevo archivo");
-        BtnNewArchive.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnNewArchivo.setText("Nuevo archivo");
+        BtnNewArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnNewArchiveMouseClicked(evt);
+                BtnNewArchivoMouseClicked(evt);
+            }
+        });
+        BtnNewArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNewArchivoActionPerformed(evt);
             }
         });
 
@@ -51,25 +64,48 @@ public class mainFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Salir");
+
+        jButton2.setText("Cerrar");
+
+        jButton3.setText("Salvar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(448, 448, 448)
-                .addComponent(BtnNewArchive)
-                .addGap(70, 70, 70)
+                .addGap(150, 150, 150)
+                .addComponent(BtnNewArchivo)
+                .addGap(89, 89, 89)
                 .addComponent(BtnOpenArchive)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
+                .addComponent(jButton3)
+                .addGap(91, 91, 91)
+                .addComponent(jButton2)
+                .addContainerGap(372, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(135, 135, 135))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(278, 278, 278)
+                .addGap(107, 107, 107)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnNewArchive)
-                    .addComponent(BtnOpenArchive))
-                .addContainerGap(334, Short.MAX_VALUE))
+                    .addComponent(BtnNewArchivo)
+                    .addComponent(BtnOpenArchive)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 403, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(79, 79, 79))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -86,7 +122,7 @@ public class mainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnNewArchiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnNewArchiveMouseClicked
+    private void BtnNewArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnNewArchivoMouseClicked
         String nombreArchivo = JOptionPane.showInputDialog(null, "Ingrese el nombre del nuevo archivo:");
         if (nombreArchivo != null && !nombreArchivo.isEmpty()) {
             try {
@@ -102,7 +138,7 @@ public class mainFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Nombre de archivo inválido. Inténtelo de nuevo.");
         }
-    }//GEN-LAST:event_BtnNewArchiveMouseClicked
+    }//GEN-LAST:event_BtnNewArchivoMouseClicked
 
     private void BtnOpenArchiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnOpenArchiveMouseClicked
         JFileChooser fileChooser = new JFileChooser();
@@ -116,6 +152,20 @@ public class mainFrame extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_BtnOpenArchiveMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void BtnNewArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNewArchivoActionPerformed
+        // TODO add your handling code here:
+        String Nombre = JOptionPane.showInputDialog("Ingrese el nombre del archivo");
+        try {
+            crearArchivo(Nombre, "lmao");
+        } catch (IOException ex) {
+            Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BtnNewArchivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,8 +203,22 @@ public class mainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnNewArchive;
+    private javax.swing.JButton BtnNewArchivo;
     private javax.swing.JButton BtnOpenArchive;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
+    public void crearArchivo(String Nombre, String contenido) throws IOException{
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(Nombre+".txt"));
+            writer.write(contenido);
+            JOptionPane.showMessageDialog(null, "Se ha creado exitosamente!");
+            writer.flush();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
+
