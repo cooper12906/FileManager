@@ -43,23 +43,29 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="botonCrearCampo" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tituloLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labelSize" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="spinnerSize" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fieldTitulo" min="-2" pref="317" max="-2" attributes="0"/>
-                                  <Component id="comboBoxTipos" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tituloLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelSize" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="spinnerSize" min="-2" max="-2" attributes="0"/>
+                          <Component id="fieldTitulo" min="-2" pref="317" max="-2" attributes="0"/>
+                          <Component id="comboBoxTipos" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="radioButtonSi" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="radioButtonNo" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="68" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="botonCrearCampo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -71,7 +77,7 @@
                           <Component id="tituloLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="fieldTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="labelSize" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="spinnerSize" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -81,9 +87,15 @@
                           <Component id="comboBoxTipos" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="121" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioButtonSi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioButtonNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="83" max="32767" attributes="0"/>
                       <Component id="botonCrearCampo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -132,10 +144,27 @@
                 <Property name="text" type="java.lang.String" value="Tipo"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JRadioButton" name="radioButtonSi">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Si"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="radioButtonNo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="No"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Es clave primaria"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -184,21 +213,24 @@
                   <Component id="BotonCerrarPrograma" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnOpenDC" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnNewArchivo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnOpenDC" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="BtnNewArchivo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                           <Component id="BtnOpenArchive" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                           <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jScrollPane1" min="-2" pref="505" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="372" max="32767" attributes="0"/>
+                  <EmptySpace pref="274" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -212,9 +244,18 @@
                       <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="224" max="32767" attributes="0"/>
-                  <Component id="btnOpenDC" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnOpenDC" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="258" max="-2" attributes="0"/>
+                          <EmptySpace pref="82" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
                   <Component id="BotonCerrarPrograma" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
               </Group>
@@ -237,6 +278,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnOpenArchiveMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnOpenArchiveActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BotonCerrarPrograma">
@@ -271,6 +313,21 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnOpenDCMouseClicked"/>
           </Events>
         </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea1">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
