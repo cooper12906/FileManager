@@ -2,14 +2,24 @@ package FileManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Archivo extends java.io.File{
        
+    private ArrayList<Campo> campos = new ArrayList();
+    
     public Archivo(String pathname) {
         super(pathname);
     }
-      
+
+    public ArrayList<Campo> getCampos() {
+        return campos;
+    }
+
+    public void setCampos(ArrayList<Campo> campos) {
+        this.campos = campos;
+    } 
     
     public void createArchive(){
         String nombreArchivo = JOptionPane.showInputDialog(null, "Ingrese el nombre del nuevo archivo:");

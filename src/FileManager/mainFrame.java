@@ -23,7 +23,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class mainFrame extends javax.swing.JFrame {
 
     Archivo a = null;
-    private ArrayList<Campos> campos = new ArrayList();
+    private ArrayList<Campo> campos = new ArrayList();
     
     
     public mainFrame() {
@@ -51,6 +51,10 @@ public class mainFrame extends javax.swing.JFrame {
         botonCrearCampo = new javax.swing.JButton();
         comboBoxTipos = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        radioButtonSi = new javax.swing.JRadioButton();
+        radioButtonNo = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         mainPanel = new javax.swing.JPanel();
         BtnNewArchivo = new javax.swing.JButton();
         BtnOpenArchive = new javax.swing.JButton();
@@ -76,25 +80,37 @@ public class mainFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Tipo");
 
+        radioButtonSi.setText("Si");
+
+        radioButtonNo.setText("No");
+
+        jLabel2.setText("Es clave primaria");
+
         javax.swing.GroupLayout CrearCamposLayout = new javax.swing.GroupLayout(CrearCampos);
         CrearCampos.setLayout(CrearCamposLayout);
         CrearCamposLayout.setHorizontalGroup(
             CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CrearCamposLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonCrearCampo)
+                .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloLabel)
+                    .addComponent(labelSize)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(31, 31, 31)
+                .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spinnerSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxTipos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(CrearCamposLayout.createSequentialGroup()
-                        .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tituloLabel)
-                            .addComponent(labelSize)
-                            .addComponent(jLabel1))
-                        .addGap(31, 31, 31)
-                        .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spinnerSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxTipos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(radioButtonSi)
+                        .addGap(18, 18, 18)
+                        .addComponent(radioButtonNo)))
                 .addContainerGap(68, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearCamposLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonCrearCampo)
+                .addGap(43, 43, 43))
         );
         CrearCamposLayout.setVerticalGroup(
             CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +119,7 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tituloLabel)
                     .addComponent(fieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSize)
                     .addComponent(spinnerSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -111,9 +127,14 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxTipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(CrearCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(radioButtonSi)
+                    .addComponent(radioButtonNo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(botonCrearCampo)
-                .addGap(28, 28, 28))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout dialogCamposLayout = new javax.swing.GroupLayout(dialogCampos.getContentPane());
@@ -297,16 +318,19 @@ public class mainFrame extends javax.swing.JFrame {
     private void botonCrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCrearCampoMouseClicked
         while (true) {        
             String titulo = fieldTitulo.getText();
+            int longitud = (Integer) spinnerSize.getValue();
+            String type = (String) comboBoxTipos.getSelectedItem(); 
+            boolean esClave = (radioButtonSi.isSelected());
+            
             if (titulo.isBlank()) {
                 JOptionPane.showMessageDialog(CrearCampos, "Debe ingresar un titulo para el campo");
                 break;
             }
+
+            campos.add(new Campo(titulo, type, longitud, esClave,esClave,false));
+            escribirCampoEnArchivo();
             
-            
-            
-            
-            String type = (String) comboBoxTipos.getSelectedItem(); 
-            
+            JOptionPane.showMessageDialog(CrearCampos, "Campo creado correctamente");
         }
     }//GEN-LAST:event_botonCrearCampoMouseClicked
     //Boton para Cerrar Archivo
@@ -352,14 +376,18 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel CrearCampos;
     private javax.swing.JButton botonCrearCampo;
     private javax.swing.JButton btnOpenDC;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> comboBoxTipos;
     private javax.swing.JDialog dialogCampos;
     private javax.swing.JTextField fieldTitulo;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel labelSize;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JRadioButton radioButtonNo;
+    private javax.swing.JRadioButton radioButtonSi;
     private javax.swing.JSpinner spinnerSize;
     private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
@@ -373,8 +401,10 @@ public class mainFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    public void crearCampo(){
-        
+    public String crearCampo(String titulo, int size, String tipo){
+        String campo = "";
+        campo += titulo + '@' + Integer.toString(size) + '@' + tipo + '\n';
+        return campo;
     }
     public void manipularCampoArchivo(File archivo,Component parent) {
         boolean metaExist = true;
@@ -394,5 +424,27 @@ public class mainFrame extends javax.swing.JFrame {
         }
     }
     
+    public void escribirCampoEnArchivo(){
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(a, rootPaneCheckingEnabled));
+            writer.write(campos.toString());
+            writer.newLine();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(CrearCampos, "no funciona este metodo estupido");
+        }
+    }
+    
+    public boolean ValidarCampo(Campo campo, int pos) {
+        for (int i = 0; i < a.getCampos().size(); i++) {
+            String campo_original = a.getCampos().get(i).getNombre().toLowerCase();
+            if (campo_original.equals(campo.getNombre().toLowerCase())) {
+                if (i == pos) {
+                    return true;
+                }
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
